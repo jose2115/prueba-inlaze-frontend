@@ -1,0 +1,56 @@
+<div class="font-sans fondo">
+  <div class="relative min-h-screen flex flex-col sm:justify-center items-center ">
+      <div class="relative sm:max-w-sm w-full">
+          <div class="relative w-full pb-4 rounded-3xl  shadow-md">
+
+            <div class="flex justify-center ">
+              <img class="w-full" src="assets/image/fondo.png" alt="">
+            </div>
+            
+              <div class="my-7 px-6">
+                <button  [routerLink]="[ '/public/register']" class=" border border-white text-xl w-full py-3 rounded-full text-yellow-400  shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                    Registro
+                </button>
+              </div>
+              <form [formGroup]="loginForm" (ngSubmit)="login()" class="mt-10  px-6 mb-4">
+                                 
+                  <div>
+                    <p class="text-sm text-yellow-400">Correo</p>
+                      <input matInput formControlName="email" required type="text" placeholder="Correo electronico" 
+                      class=" border fondo border-white mt-1 text-white pl-2 block w-full h-11  rounded-full shadow-lg focus:fondo"
+                      >
+                    </div>
+      
+                  <div class="mt-7">   
+                    <p class="text-sm text-yellow-400">Contraseña</p>               
+                      <input required formControlName="password" type="password" placeholder="Contraseña" 
+                      class="border fondo border-white mt-1 text-white pl-2 block w-full h-11  rounded-full shadow-lg focus:fondo"
+                      >                           
+                    </div>
+
+                  <div class="mt-7 flex">
+                      <label for="remember_me" class="inline-flex items-center w-full cursor-pointer">
+                          <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                          <span class="ml-2 text-sm text-white">
+                              Recuerdame
+                          </span>
+                      </label>
+      
+                     <div class="w-full text-right">     
+                                                          
+                     </div>
+                  </div>
+      
+                  <div class="my-7">
+                      <button type="submit" [disabled]="!this.loginForm.valid" class="bg-gray-50 w-full py-3 rounded-full font-semibold text-xl shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                          Iniciar Sesion
+                      </button>
+                  </div>
+      
+                
+              </form>
+          </div>
+      </div>
+  </div>
+  
+</div>

@@ -1,0 +1,29 @@
+<div class="w-full px-6 pt-6">
+
+  <span class="text-3xl font-semibold ">Editar Comentario</span>
+
+  <form  [formGroup]="commentForm" (ngSubmit)="editComment()" class="min-w-full z-index-4 text">
+    
+    <div>
+      <label class=" font-semibold block my-3 text-lg" for="username">Titulo</label>
+      <input [(ngModel)]="data.title" formControlName="title" class="w-full px-4 py-2 rounded-xl focus:outline-none border-2" type="text" placeholder="" />
+      <div *ngIf="this.commentForm.get( 'title' )?.invalid && (this.commentForm.get( 'title' )?.dirty || this.commentForm.get( 'title' )?.touched)">
+              <p *ngIf="this.commentForm.get( 'title' )?.hasError('required')" class="text-sm italic text-red-400 ">El nombre es requerido*</p>
+              <p *ngIf="this.commentForm.get( 'title' )?.hasError('minlength')" class="text-sm italic text-red-400 ">El nombre esta muy corto*</p>
+              <p *ngIf="this.commentForm.get( 'title' )?.hasError('maxlength')" class="text-sm italic text-red-400 ">El nombre esta muy largo*</p>
+        </div>
+    </div>
+      <div>
+        <label  class=" font-semibold block my-3 text-lg" for="email">Comentario</label>
+        <textarea  [(ngModel)]="data.comment" formControlName="comment" class="w-full px-4 py-2  rounded-xl focus:outline-none border-2 " name="" id="" cols="30" rows="10"></textarea>
+        <div *ngIf="this.commentForm.get( 'comment' )?.invalid && (this.commentForm.get( 'comment' )?.dirty || this.commentForm.get( 'comment' )?.touched)">
+          <p *ngIf="this.commentForm.get( 'comment' )?.hasError('required')" class="text-sm italic text-red-400 ">El nombre es requerido*</p>
+          <p *ngIf="this.commentForm.get( 'comment' )?.hasError('minlength')" class="text-sm italic text-red-400 ">El nombre esta muy corto*</p>
+          <p *ngIf="this.commentForm.get( 'comment' )?.hasError('maxlength')" class="text-sm italic text-red-400 ">El nombre esta muy largo*</p>
+    </div>
+    </div>
+        <button [disabled]="!this.commentForm.valid" type="submit" class="w-full mt-6 rounded-full px-4 py-2 text-lg  tracking-wide font-semibold font-sans border-2">Crear comentario</button>
+        
+    </form>
+
+</div>

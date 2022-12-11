@@ -1,0 +1,19 @@
+
+<div class="w-full h-auto bg-gray-300 rounded-lg px-5 py-4 mb-4 relative  ">
+  <div [routerLink]="[ '/private/edit/comment', data.id ]" *ngIf="data.user_id == id" class="w-12 h-12 absolute right-2 top-2 flex justify-center cursor-pointer">
+    <svg class="h-7 w-7 text-gray-600" 
+    width="9"  height="9"  viewBox="0 0 24 24"  xmlns="http://www.w3.org/2000/svg"  fill="none"  stroke="currentColor"  
+    stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
+  </svg>
+  </div>
+  <p class="text-xl font-semibold font-sans">{{data.title}} </p>
+  <span class="text-sm">{{data.comment}} </span>
+
+    <div class="w-full flex justify-between">
+
+      <span class="text-sm mt-2"> {{data.createdAt | date:'h:mm a, M/d/yy'}}</span>
+      <span class="font-bold text-xl">{{data.users.name}} </span>
+
+    </div>
+
+</div>

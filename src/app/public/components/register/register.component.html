@@ -1,0 +1,102 @@
+<div class="font-sans fondo">
+  <div class="relative min-h-screen flex flex-col sm:justify-center items-center">
+      <div class="relative sm:max-w-sm w-full">
+          <div class="relative w-full pb-4 rounded-3xl shadow-md">
+
+            <div class="flex justify-center ">
+              <img class="w-full" src="assets/image/fondo.png" alt="">
+            </div>
+
+            <div class="my-7 px-6">
+              <button  [routerLink]="[ '/public/login']" class=" border border-white  text-xl w-full py-3 rounded-full text-yellow-400 font-semibold  shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                  Inicio de session
+              </button>
+            </div>
+
+              <form [formGroup]="registerForm" (ngSubmit)="register()" class="mt-10  px-6 mb-4">
+                                 
+                  <div>
+                    <p class="text-sm text-yellow-400">Usuario</p>
+                      <input matInput formControlName="nickName" required type="text" placeholder="Usuario" 
+                      class="border fondo border-white mt-1 text-white pl-2 block w-full h-11  rounded-full shadow-lg focus:fondo">
+                      <div *ngIf="this.registerForm.get( 'nickName' )?.invalid && 
+                        (this.registerForm.get( 'nickName' )?.dirty || this.registerForm.get( 'nickName' )?.touched)">
+                        <p *ngIf="this.registerForm.get( 'nickName' )?.hasError('required')" class="text-sm italic text-white">El nombre es requerido*</p>
+                        <p *ngIf="this.registerForm.get( 'nickName' )?.hasError('minlength')" class="text-sm italic text-white ">El nombre esta muy corto*</p>
+                        <p *ngIf="this.registerForm.get( 'nickName' )?.hasError('maxlength')" class="text-sm italic text-white ">El nombre esta muy largo*</p>
+                      </div>
+                    </div>
+
+                  <div class="mt-7">
+                    <p class="text-sm text-yellow-400">Nombre completo</p>
+                      <input matInput formControlName="name" required type="text" placeholder="Nombre completo" 
+                      class="border fondo border-white mt-1 text-white pl-2 block w-full h-11  rounded-full shadow-lg focus:fondo">
+                      <div *ngIf="this.registerForm.get( 'name' )?.invalid && 
+                      (this.registerForm.get( 'name' )?.dirty || this.registerForm.get( 'name' )?.touched)">
+                      <p *ngIf="this.registerForm.get( 'name' )?.hasError('required')" class="text-sm italic text-white">El nombre es requerido*</p>
+                      <p *ngIf="this.registerForm.get( 'name' )?.hasError('minlength')" class="text-sm italic text-white ">El nombre esta muy corto*</p>
+                      <p *ngIf="this.registerForm.get( 'name' )?.hasError('maxlength')" class="text-sm italic text-white ">El nombre esta muy largo*</p>
+                      <p *ngIf="this.registerForm.get( 'name' )?.hasError('pattern')" class="text-sm italic text-white ">Solo letras*</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-7">
+                    <p class="text-sm text-yellow-400">Correo</p>
+                    <input matInput formControlName="email" required type="text" placeholder="Correo electronico" 
+                    class="border fondo border-white mt-1 text-white pl-2 block w-full h-11  rounded-full shadow-lg focus:fondo">
+                    <div *ngIf="this.registerForm.get( 'email' )?.invalid && (this.registerForm.get( 'email' )?.dirty || this.registerForm.get( 'email' )?.touched)">
+                        <p *ngIf="this.registerForm.get( 'email' )?.hasError('required')" class="text-sm italic text-white ">El correo es requerido*</p>
+                         <p *ngIf="this.registerForm.get( 'email' )?.hasError('email')" class="text-sm italic text-white ">Debe ser un correo*</p>
+                    </div>
+
+                  </div>
+      
+                  <div class="mt-7">   
+                    <p class="text-sm text-yellow-400">Contraseña</p>             
+                      <input required formControlName="password" type="password" placeholder="Contraseña" 
+                      class="border fondo border-white mt-1 text-white pl-2 block w-full h-11  rounded-full shadow-lg focus:fondo"> 
+                      <div *ngIf="this.registerForm.get( 'password' )?.invalid && (this.registerForm.get( 'password' )?.dirty || this.registerForm.get( 'password' )?.touched)">
+                        <p *ngIf="this.registerForm.get( 'password' )?.hasError('required')" class="text-sm italic text-white ">La contraseña es requerida*</p>
+                        <p *ngIf="this.registerForm.get( 'password' )?.hasError('minlength')" class="text-sm italic text-white ">La contraseña esta muy corta*</p>
+                        <p *ngIf="this.registerForm.get( 'password' )?.hasError('maxlength')" class="text-sm italic text-white ">La contraseña esta muy larga*</p>
+                      </div>                          
+                      <p *ngIf="checarSiSonIguales()" class="text-sm italic text-red-400d"  >No son iguales</p>
+                    </div>
+
+                  <div class="mt-7">  
+                    <p class="text-sm text-yellow-400">Repetir contraseña</p>              
+                      <input required formControlName="password2" type="password" placeholder="Repetir contraseña" 
+                      class="border fondo border-white mt-1 text-white pl-2 block w-full h-11  rounded-full shadow-lg focus:fondo">
+                      <div *ngIf="this.registerForm.get( 'password2' )?.invalid && (this.registerForm.get( 'password2' )?.dirty || this.registerForm.get( 'password2' )?.touched)">
+                        <p *ngIf="this.registerForm.get( 'password2' )?.hasError('required')" class="text-sm italic text-white ">La contraseña es requerida*</p>
+                        <p *ngIf="this.registerForm.get( 'password2' )?.hasError('minlength')" class="text-sm italic text-white">La contraseña esta muy corta*</p>
+                        <p *ngIf="this.registerForm.get( 'password2' )?.hasError('maxlength')" class="text-sm italic text-white">La contraseña esta muy larga*</p>
+                      </div>                           
+                      <p *ngIf="checarSiSonIguales()" class="text-sm italic text-red-400"  >No son iguales</p>
+                  </div>
+
+                  <div class="mt-7 flex">
+                      <label for="remember_me" class="inline-flex items-center w-full cursor-pointer">
+                          <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
+                          <span class="ml-2 text-sm text-gray-600">
+                              Recuerdame
+                          </span>
+                      </label>
+      
+                     <div class="w-full text-right">     
+                                                          
+                     </div>
+                  </div>
+      
+                  <div class="my-7">
+                      <button type="submit" [disabled]="!this.registerForm.valid" class="bg-gray-50 w-full py-3 rounded-xl text-xl font-semibold shadow-xl hover:shadow-inner focus:outline-none transition duration-500 ease-in-out  transform hover:-translate-x hover:scale-105">
+                          Registrarme
+                      </button>
+                  </div>
+    
+              </form>
+          </div>
+      </div>
+  </div>
+  
+</div>

@@ -1,0 +1,13 @@
+<div class="px-2 pt-4 fondo">
+
+  <span class="text-3xl font-semibold text-yellow-400 font-semibold my-12 ">Todos Comentario</span>
+
+  <p class="text-sm text-yellow-400 mt-6 mb-2">Selecione fecha</p>
+  <input class="w-full border fondo border-white h-12 rounded-full mb-6" [(ngModel)]="date" type="date">
+  <p class="text-sm text-yellow-400  mb-2">Que buscas</p>
+  <input class="w-full border fondo border-white h-12 rounded-full mb-12" [(ngModel)]="search" type="text">
+
+  <app-card-comment   *ngFor="let item of comments | queryDate:date | queryComment:search " [data]="item" class="mb-4"></app-card-comment>
+
+</div>
+
